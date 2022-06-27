@@ -3,25 +3,11 @@ services:
   web:
     image: alexcheng/magento2
     ports:
-      - "80:80"
-    links:
-      - db
-    volumes: 
-      - magento-data:/var/www/html  
-    env_file:
-      - env
-  db:
-    image: mysql:5.6.23
+      - "8001:80"
     volumes:
-      - db-data:/var/lib/mysql/data
+      - magento-data:/var/www/html
     env_file:
       - env
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - "8580:80"
-    links:
-      - db     
 volumes:
   magento-data:
-  db-data: 
+  db-data:

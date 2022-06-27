@@ -1,0 +1,21 @@
+bin/magento module:disable {Magento_Elasticsearch,Magento_Elasticsearch6,Magento_Elasticsearch7}
+
+bin/magento setup:install \
+--base-url=http://localhost/magento2.4 \
+--db-host=172.19.0.1 \
+--db-name=magento \
+--db-user=magento \
+--db-password=magento \
+--admin-firstname=Heggies \
+--admin-lastname=Iqbal \
+--admin-email=heggies.wadie@indodana.com \
+--admin-user=heggies \
+--admin-password=EngHunger2022 \
+--backend-frontname=admin \
+--language=en_US \
+--currency=USD \
+--timezone=America/Chicago \
+--use-rewrites=1
+
+
+versi phpunit magento2.4.3: 9.2.6
