@@ -34,11 +34,10 @@ $ docker-compose up -d
 For admin username and password, please refer to the file `env`. You can also change the file `env` to update those configurations. Below are the default configurations.
 
 ~~~
-MYSQL_HOST=db
-MYSQL_ROOT_PASSWORD=myrootpassword
-MYSQL_USER=magento
-MYSQL_PASSWORD=magento
-MYSQL_DATABASE=magento
+POSTGRES_HOST=db
+POSTGRES_USER=magento
+POSTGRES_PASSWORD=magento
+POSTGRES_DATABASE=magento
 
 MAGENTO_LANGUAGE=en_GB
 MAGENTO_TIMEZONE=Pacific/Auckland

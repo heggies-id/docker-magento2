@@ -9,8 +9,8 @@ ENV MAGENTO_VERSION 2.3.6
 ENV INSTALL_DIR /var/www/html
 ENV COMPOSER_HOME /var/www/.composer/
 
-RUN curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer
+RUN curl -o composer.phar https://getcomposer.org/download/latest-1.x/composer.phar \
+    && mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 COPY ./auth.json $COMPOSER_HOME
 
 RUN requirements="libpng++-dev libzip-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg-turbo8 libjpeg-turbo8-dev libfreetype6-dev libicu-dev libxslt1-dev unzip" \
@@ -38,7 +38,7 @@ RUN cd /tmp && \
   mv magento2-$MAGENTO_VERSION/* magento2-$MAGENTO_VERSION/.htaccess $INSTALL_DIR
 
 RUN chown -R www-data:www-data /var/www
-RUN su www-data -c "cd $INSTALL_DIR && composer install"
+RUN su www-data -c "cd $INSTALL_DIR && composer update && composer install --ignore-platform-req=ext-sockets"
 RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"  
 
 RUN cd $INSTALL_DIR \
